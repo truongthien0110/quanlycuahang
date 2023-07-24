@@ -1,0 +1,82 @@
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="active">Danh mục sản phẩm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- Begin Li's Content Wraper Area -->
+<div class="content-wraper pt-60 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Begin Li's Banner Area -->
+                <div class="single-banner shop-page-banner">
+                    <a href="#">
+                        <img src="assets/images//bg-banner/2.jpg" alt="Li's Static Banner">
+                    </a>
+                </div>
+                <!-- Li's Banner Area End Here -->
+                <!-- shop-top-bar start -->
+                <!-- shop-top-bar end -->
+                <!-- shop-products-wrapper start -->
+                <div class="shop-products-wrapper">
+                    <div class="tab-content">
+                        <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+                            <div class="product-area shop-product-area">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mt-40" *ngFor="let item of list_item">
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="product-image" style="width: 250px; ">
+                                                <a [routerLink]=" [ '/chitiet',item.maSp]" href="">
+                                                    <img src="{{item.anh}}" alt="Li's Product Image">
+                                                </a>
+                                                
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        <h5 class="manufacturer">                                                           
+                                                        </h5>
+                                                        
+                                                    </div>
+                                                    <h4><a [routerLink]=" [ '/chitiet',item.maSp]" class="product_name" href="">{{item.tensp}}</a></h4>
+                                                    <div class="price-box">
+                                                        <span class="new-price">{{item.giatien|number}}đ</span>
+                                                        <span class="old-price">{{item.giaKm|number}}đ</span>
+                                                      
+                                                    </div>
+                                                </div>
+                                                <div class="add-actions">
+                                                    <ul class="add-actions-link">
+                                                        <li class="add-cart active"><a href="shopping-cart.html">Thêm giỏ hàng</a></li>                                                       
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single-product-wrap end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mt-3">
+                              <li class="page-item" *ngFor="let page of getPagesArray()">
+                                <button class="page-link" (click)="loadPage(page)">{{ page }}</button>
+                              </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- shop-products-wrapper end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Wraper Area End Here -->

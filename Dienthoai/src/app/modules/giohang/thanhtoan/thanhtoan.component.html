@@ -1,0 +1,128 @@
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Thanh toán</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Checkout Area Strat-->
+<div class="checkout-area pt-60 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <form [formGroup]="frmKhach" (ngSubmit)="onSubmit(frmKhach.value)">
+                    <div class="checkbox-form">
+                        <h3>Chi tiết Đơn Hàng</h3>
+                        <div class="row">
+                            
+                            <div class="col-md-12">
+                                <div class="checkout-form-list" >
+                                    <label for="txt_hoten" >Họ và tên<span class="required">*</span></label>
+                                    <span *ngIf="hoten.invalid && (hoten.dirty || hoten.touched)">
+                                        <span *ngIf="hoten.errors?.['required']">Họ tên không được rỗng</span>
+                                        <span *ngIf="hoten.errors?.['minlength']">
+                                            Họ tên không được nhỏ hơn 3 ký tự
+                                        </span>
+                                        <span *ngIf="hoten.errors?.['maxlength']">
+                                            Họ tên không được lớn hơn 20 ký tự
+                                        </span>
+                                    </span>
+                                    
+                                    <input placeholder="" type="text" formControlName="txt_hoten" type="text" ngModel >
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label for="txt_diachi" >Địa chỉ<span class="required">*</span></label>
+                                    <span *ngIf="diachi.invalid && (diachi.dirty || diachi.touched)">
+                                        <span *ngIf="diachi.errors?.['required']">Địa chỉ không được rỗng</span>
+                                    </span> 
+                                    <textarea formControlName="txt_diachi" cols="135" rows="1" ngModel></textarea>
+                                </div>
+                            </div>                            
+
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label for="txt_email">Email  <span class="required">*</span></label>
+                                    <span *ngIf="email.invalid && (email.dirty || email.touched)">
+                                        <span *ngIf="email.errors?.['email']">Không đúng định dạng của email</span>
+                                    </span> 
+                                    <input placeholder="" type="email" formControlName="txt_email" type="text" ngModel>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label for="txt_sđt">Số điện thoại <span class="required">*</span></label>
+                                    <span *ngIf="sodienthoai.invalid && (sodienthoai.dirty || sodienthoai.touched)">
+                                        <span *ngIf="sodienthoai.errors?.['required']">Số điện thoại không được rỗng</span>
+                                        <span *ngIf="sodienthoai.errors?.['pattern']">Không đúng định dạng số điện thoại</span>
+                                    </span>
+                                    <input type="text" formControlName="txt_sđt" type="text" ngModel>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list create-acc">
+                                    <input id="cbox" type="checkbox">
+                                    <label>Taọ tài khoản mới?</label>
+                                </div>
+                                <div id="cbox-info" class="checkout-form-list create-account">
+                                    <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
+                                    <label>Account password  <span class="required">*</span></label>
+                                    <input placeholder="password" type="password">
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-12 col-s-12" style="text-align: left;">
+                        <button [disabled]="frmKhach.invalid" [ngStyle]="{'background-color':frmKhach.invalid?'#F4F6F8':'blue'}" type="submit">ĐẶT HÀNG</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="your-order">
+                    <h3>Hóa đơn của bạn </h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-total">Total</th>
+                                </tr>
+                            </thead>    
+                            <tbody>
+                                <tr class="cart_item" *ngFor="let it of list_items">
+                                  <td class="cart-product-name"> {{it.tensp}} * {{it.quantity}}<strong class="product-quantity"> × 1</strong></td>
+                                  <td class="cart-product-total"><span class="amount">{{it.quantity * it.giatien}}đ</span></td>  
+                                </tr>                                
+                            </tbody>                       
+                            <tfoot>
+
+                                <tr class="order-total">
+                                    <th>Tổng tiền</th>
+                                    <td><strong><span class="amount">{{tTong}}</span></strong></td>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="payment-method">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout Area End-->

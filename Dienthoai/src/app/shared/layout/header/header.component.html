@@ -1,0 +1,145 @@
+<!-- Begin Header Top Area -->
+<div class="header-top">
+    
+</div>
+<!-- Header Top Area End Here -->
+<!-- Begin Header Middle Area -->
+<div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0" >
+    <div class="container">
+        <div class="row">
+            <!-- Begin Header Logo Area -->
+            <div class="col-lg-2">
+                <div class="logo pb-sm-30 pb-xs-30">
+                    <a href="index.html">
+                        <img src="./assets/images/menu/logo/5.jpg" alt="" style="width: 200px; height: 150px;">
+                    </a>
+                </div>
+            </div>
+            <!-- Header Logo Area End Here -->
+            <!-- Begin Header Middle Right Area -->
+            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15" style="padding-top: 30px; padding-left: 100px!important">
+                <!-- Begin Header Middle Searchbox Area -->
+                <form (ngSubmit)="searchProduct()" class="hm-searchbox">
+                    <input type="text" name="keyword" [(ngModel)]="searchKeyword" placeholder="Nhập tên sản phẩm cần tìm...">
+                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+                <!-- Header Middle Searchbox Area End Here -->
+                <!-- Begin Header Middle Right Area -->
+                <div class="header-middle-right">
+                    <ul class="hm-menu">
+                        <!-- Begin Header Middle Wishlist Area -->
+
+                        <!-- Header Middle Wishlist Area End Here -->
+                        <!-- Begin Header Mini Cart Area -->
+                        <li class="hm-minicart">
+                            
+                            <a [routerLink]="['/hoadon']" class="li-button li-button-fullwidth li-button-dark">
+                                <img src="./assets/images/about-us/icon/gh.png" alt="" style="width: 50px">
+                            </a>
+                            
+                            <span></span>
+                            <div class="minicart">
+                                <ul class="minicart-product-list">
+                                </ul>                            
+                                <div class="minicart-button">
+                                    <a [routerLink]="['/hoadon']" class="li-button li-button-fullwidth li-button-dark">
+                                        <span>Xem giỏ hàng </span>
+                                    </a>
+                                    <a [routerLink]="['/thanhtoan'] " class=" li-button li-button-fullwidth ">
+                                        <span>Thanh Toán</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Header Mini Cart Area End Here -->
+                    </ul>
+                </div>
+                <!-- Header Middle Right Area End Here -->
+            </div>
+            
+            <div *ngIf="searchResults">
+                <div class="mt-5"><h3>Kết quả tìm kiếm:</h3></div>
+                <div class="tab-content">
+                    <div class="row mt-3">
+                        <div class="col-lg-2" *ngFor="let it of searchResults.data">
+                            <!-- single-product-wrap start -->
+                            <div class="single-product-wrap">
+                                <div class="product-image">
+                                    <a [routerLink]="['/chitiet/:id', it.maSp]">
+                                        <img src="{{it.anh}}" alt="Li 's Product Image">
+                                    </a>
+                                    
+                                </div>
+                                <div class="product_desc">
+                                    <div class="product_desc_info">                                       
+                                        <h4>
+                                            <a class="product_name" [routerLink]="['/chitiet', it.maSp]">{{it.tensp}}</a>
+                                        </h4>
+                                        <div class=" price-box">
+                                            <span class="new-price">{{it.giatien|number}}đ</span>
+                                            <span class="old-price">{{it.giaKm|number}}đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="add-actions">
+                                        <ul class="add-actions-link d-flex flex-row">
+                                            <li (click)="_addToCart(it)" class="add-cart active "><a href="# ">Thêm vào giỏ hàng</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single-product-wrap end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Middle Right Area End Here -->
+        </div>
+    </div>
+</div>
+<!-- Header Middle Area End Here -->
+<!-- Begin Header Bottom Area -->
+<div class="header-bottom header-sticky d-none d-lg-block d-xl-block ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-lg-12 ">
+                <!-- Begin Header Bottom Menu Area -->
+                <div class="hb-menu ">
+                    <nav>
+                        <ul>
+                            <li class="dropdown-holder "><a href="index.html ">Trang chủ</a> </li>
+                            <li class="megamenu-static-holder"><a href="">Danh mục</a>
+                                <ul class="hb-dropdown ">
+                                    <li *ngFor="let it of danhmuc" class=" sub-dropdown-holder ">
+                                        <a [routerLink]="['/danhmuc',it.maLoai]">{{it.tenLoai}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-holder "> <a [routerLink]="[ '/tintuc'] ">Tin tức </a> </li>
+                            <li class="megamenu-static-holder "><a href="index.html ">Các dịch vụ tiện ích</a>
+                                <ul class="megamenu hb-megamenu ">
+                                    <li><a href="blog-left-sidebar.html ">Chính sách giao hàng </a>
+                                    </li>
+                                    <li><a href="blog-details-left-sidebar.html ">Chính sách trả góp</a> </li>
+                                    <li><a href="index.html ">Chính sách bảo hành-sửa chữa</a> </li>
+                                </ul>
+                            </li>                           
+
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Header Bottom Menu Area End Here -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header Bottom Area End Here -->
+<!-- Begin Mobile Menu Area -->
+<div class="mobile-menu-area d-lg-none d-xl-none col-12 ">
+    <div class="container ">
+        <div class="row ">
+            <div class="mobile-menu ">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mobile Menu Area End Here -->
